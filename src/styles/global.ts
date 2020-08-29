@@ -6,15 +6,16 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: 0;
     outline: 0;
+    font-family: 'Poppins', sans-serif;
   }
 
   body {
     color: #F2F2F2;
+    overflow-x: hidden;
   }
 
   #root {
-    font-size: 14px;
-    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
     -webkit-font-smoothing: antialised;
   }
 
@@ -22,9 +23,14 @@ export default createGlobalStyle`
     font-weight: bold;
   }
 
+  h1 {
+    font-size: 1.6em;
+  }
+
   button {
     cursor: pointer;
     border: none;
+    background: transparent;
   }
 
   ul {
