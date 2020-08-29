@@ -1,7 +1,15 @@
 import React from 'react'
 
-const App: React.FC = () => {
-  return <p>Hello World</p>
-}
+import './styles/fonts'
+import GlobalStyles from './styles/global'
+
+import Home from './pages/Home'
+
+const App: React.FC = () => (
+  <>
+    <Home />
+    <GlobalStyles />
+  </>
+)
 
 export default App
