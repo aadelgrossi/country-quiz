@@ -7,19 +7,19 @@ const Question: React.FC = () => {
   return (
     <Card>
       <h2>This is a question</h2>
-      <Choice>
+      <Choice clickAction={() => {}}>
         <span>A</span>
         <span>Vietnam</span>
       </Choice>
-      <Choice>
+      <Choice clickAction={() => {}}>
         <span>B</span>
         <span>Malaysia</span>
       </Choice>
-      <Choice>
+      <Choice clickAction={() => {}}>
         <span>C</span>
         <span>Sweden</span>
       </Choice>
-      <Choice>
+      <Choice clickAction={() => {}}>
         <span>D</span>
         <span>Austria</span>
       </Choice>
