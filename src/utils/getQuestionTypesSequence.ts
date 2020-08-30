@@ -1,4 +1,4 @@
-import { QuestionType } from '../enums'
+import { QuestionType } from '../questionTypes'
 
 export const getQuestionTypesSequence = (
   categories: QuestionType[],

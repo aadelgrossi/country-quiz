@@ -17,5 +17,4 @@ export interface IQuiz {
   score: number
   status: Status
   currentQuestion: number
-  totaQuestions: NumQuestions
 }

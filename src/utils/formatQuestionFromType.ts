@@ -1,5 +1,5 @@
 import { ICountry } from '../types'
-import { QuestionType } from '../enums'
+import { QuestionType } from '../questionTypes'
 
 export const formatQuestionFromType = (
   type: QuestionType,

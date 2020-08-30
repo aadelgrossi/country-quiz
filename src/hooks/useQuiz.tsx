@@ -1,64 +1,69 @@
-import React, { useState, createContext, useContext, useEffect } from 'react'
+import React, {
+  useState,
+  createContext,
+  useContext,
+  useEffect,
+  useCallback
+} from 'react'
 import { getCountries } from '../services/api'
-import { useQuery } from 'react-query'
 
 import _ from 'lodash'
 
 import { getQuestionTypesSequence } from '../utils/getQuestionTypesSequence'
-import { IQuestion, ICountry } from '../types'
+import { IQuestion, ICountry, Status } from '../types'
+import { QuestionType } from '../questionTypes'
+import { difficulties } from '../difficulties'
 
 interface QuizContextData {
   questions: IQuestion[]
-}
-
-enum NumQuestions {
-  easy = 4,
-  med = 8,
-  hard = 10
-}
-
-enum QuestionType {
-  capital = 'capital',
-  flag = 'flag',
-  region = 'region'
+  quizStatus: Status
+  chooseDifficulty(difficulty: string): void
 }
 
 const QuizContext = createContext<QuizContextData>({} as QuizContextData)
 
 export const QuizProvider: React.FC = ({ children }) => {
-  const [countriesData, setCountriesData] = useState<ICountry[]>(
-    [] as ICountry[]
-  )
+  const [quizStatus, setQuizStatus] = useState<Status>('standby')
+  const [numQuestions, setNumQuestions] = useState(0)
   const [questions, setQuestions] = useState([] as IQuestion[])
-  const { data } = useQuery('countriesData', getCountries)
+  const [countries, setCountries] = useState<ICountry[]>([] as ICountry[])
+
+  const buildQuestions = useCallback(() => {
+    const allCategories = Object.values(QuestionType)
+    const questionTypes = getQuestionTypesSequence(allCategories, numQuestions)
+
+    const newQuestions = questionTypes.map((type: QuestionType) => {
+      const choices = _.sampleSize(countries, 4)
+      return {
+        type,
+        choices,
+        correctAnswer: _.sample(choices)
+      } as IQuestion
+    })
+
+    setQuestions(newQuestions)
+  }, [countries, numQuestions])
+
+  const chooseDifficulty = useCallback(async (difficulty: string) => {
+    const data = await getCountries(difficulties[difficulty].countries)
+
+    console.log(data)
+
+    setNumQuestions(difficulties[difficulty].numQuestions)
+    setCountries(data)
+    setQuizStatus('ongoing')
+  }, [])
 
   useEffect(() => {
-    async function buildQuestions() {
-      const allCategories = Object.values(QuestionType)
-
-      const questionTypes = getQuestionTypesSequence(
-        allCategories,
-        NumQuestions.easy
-      )
-
-      const newQuestions = questionTypes.map((type: QuestionType) => {
-        const choices = _.sampleSize(data, 4)
-        return {
-          type,
-          choices,
-          correctAnswer: _.sample(choices)
-        } as IQuestion
-      })
-      setQuestions(newQuestions)
-    }
-
     buildQuestions()
-  }, [data])
+  }, [numQuestions, countries])
 
   return (
     <QuizContext.Provider
       value={{
-        questions
+        questions,
+        quizStatus,
+        chooseDifficulty
       }}
     >
       {children}
