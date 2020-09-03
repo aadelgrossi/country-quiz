@@ -39,6 +39,7 @@ export const Container = styled.button<IChoiceProps>`
         text-align: left;
         width: 30%;
         margin-right: auto;
+        text-transform: capitalize;
       }
 
       > span {

@@ -1,13 +1,13 @@
-import { QuestionType } from '../questionTypes'
+import { questionTypes } from '../parameters/question_types'
+import { QuestionType } from '../models'
 
 export const getQuestionTypesSequence = (
-  categories: QuestionType[],
   numQuestions: number
 ): QuestionType[] => {
-  const amount = Math.ceil(numQuestions / categories.length)
+  const amount = Math.ceil(numQuestions / questionTypes.length)
 
   return Array(amount)
-    .fill(categories)
+    .fill(questionTypes)
     .flat()
     .splice(0, numQuestions) as QuestionType[]
 }

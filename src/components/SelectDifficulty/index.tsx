@@ -4,7 +4,8 @@ import Card from '../Card'
 import Choice from '../Choice'
 import { useQuiz } from '../../hooks/useQuiz'
 
-import { difficulties } from '../../difficulties'
+import { difficulties } from '../../parameters/difficulties'
+import { Difficulty } from '../../models'
 
 const SelectDifficulty: React.FC = () => {
   const { chooseDifficulty } = useQuiz()
@@ -12,31 +13,17 @@ const SelectDifficulty: React.FC = () => {
   return (
     <Card>
       <h2>Choose a difficulty:</h2>
-
-      <Choice
-        clickAction={() => chooseDifficulty('easy')}
-        choiceType="difficulty"
-      >
-        <strong>Easy</strong>
-        <span>{difficulties.easy.numQuestions} questions</span>
-        <span>{difficulties.easy.numCountries} countries</span>
-      </Choice>
-      <Choice
-        clickAction={() => chooseDifficulty('medium')}
-        choiceType="difficulty"
-      >
-        <strong>Medium</strong>
-        <span>{difficulties.medium.numQuestions} questions</span>
-        <span>{difficulties.medium.numCountries} countries</span>
-      </Choice>
-      <Choice
-        clickAction={() => chooseDifficulty('hard')}
-        choiceType="difficulty"
-      >
-        <strong>Hard</strong>
-        <span>{difficulties.hard.numQuestions} questions</span>
-        <span>{difficulties.hard.numCountries} countries</span>
-      </Choice>
+      {difficulties.map((difficulty: Difficulty) => (
+        <Choice
+          key={difficulty.name}
+          clickAction={() => chooseDifficulty(difficulty)}
+          choiceType="difficulty"
+        >
+          <strong>{difficulty.name}</strong>
+          <span>{difficulty.numQuestions} questions </span>
+          <span>{difficulty.numCountries} countries </span>
+        </Choice>
+      ))}
     </Card>
   )
 }

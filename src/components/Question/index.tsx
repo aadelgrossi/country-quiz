@@ -2,27 +2,25 @@ import React from 'react'
 
 import Card from '../Card'
 import Choice from '../Choice'
+import { IQuestion } from '../../models'
 
-const Question: React.FC = () => {
+import { formatQuestionFromType } from '../../utils/formatQuestionFromType'
+
+interface QuestionProps {
+  data: IQuestion
+}
+
+const Question: React.FC<QuestionProps> = ({ data }) => {
   return (
     <Card>
-      <h2>This is a question</h2>
-      <Choice clickAction={() => {}}>
-        <span>A</span>
-        <span>Vietnam</span>
-      </Choice>
-      <Choice clickAction={() => {}}>
-        <span>B</span>
-        <span>Malaysia</span>
-      </Choice>
-      <Choice clickAction={() => {}}>
-        <span>C</span>
-        <span>Sweden</span>
-      </Choice>
-      <Choice clickAction={() => {}}>
-        <span>D</span>
-        <span>Austria</span>
-      </Choice>
+      <h2>{formatQuestionFromType(data.type, data.correctAnswer)}</h2>
+
+      {['A', 'B', 'C', 'D'].map((questionAlternative, index) => (
+        <Choice key={questionAlternative} clickAction={() => {}}>
+          <span>{questionAlternative}</span>
+          <span>{data.choices[index].name}</span>
+        </Choice>
+      ))}
     </Card>
   )
 }

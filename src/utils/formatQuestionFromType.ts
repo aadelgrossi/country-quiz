@@ -1,16 +1,15 @@
-import { ICountry } from '../types'
-import { QuestionType } from '../questionTypes'
+import { Country, QuestionType } from '../models'
 
 export const formatQuestionFromType = (
   type: QuestionType,
-  country: ICountry
+  country: Country
 ): string => {
   switch (type) {
-    case QuestionType.capital:
+    case 'capital':
       return `${country.capital} is the capital of`
-    case QuestionType.region:
+    case 'region':
       return `In which region is ${country.name} located?`
-    case QuestionType.flag:
+    case 'flag':
       return 'Which country does this flag belong to?'
     default:
       return ''
