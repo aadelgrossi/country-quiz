@@ -23,6 +23,7 @@ interface QuizContextData {
   quizStatus: QuizStatus
   currentQuestion: number
   chooseDifficulty(difficulty: Difficulty): void
+  checkAnswer(option: Country): boolean
 }
 
 const QuizContext = createContext<QuizContextData>({} as QuizContextData)
@@ -49,10 +50,18 @@ export const QuizProvider: React.FC = ({ children }) => {
     setQuestions(newQuestions)
   }, [countries, numQuestions])
 
+  const checkAnswer = useCallback(
+    (option: Country) => {
+      return option === questions[currentQuestion].correctAnswer
+    },
+    [currentQuestion, questions]
+  )
+
   const chooseDifficulty = useCallback(
     async ({ countries, numQuestions }: Difficulty) => {
       const data = await getCountries(countries)
 
+      console.log(data)
       setNumQuestions(numQuestions)
       setCountries(data)
       setQuizStatus('ongoing')
@@ -70,6 +79,7 @@ export const QuizProvider: React.FC = ({ children }) => {
         questions,
         quizStatus,
         chooseDifficulty,
+        checkAnswer,
         currentQuestion
       }}
     >

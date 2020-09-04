@@ -4,9 +4,12 @@ import questionIllustration from '../../assets/undraw_adventure_4hum_1.svg'
 export const Container = styled.div`
   background: #fff;
   border-radius: 1.4rem;
-  padding: 4rem 2.2rem;
+  padding: 2rem 2rem;
   position: relative;
   width: min(400px, 70vw);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
   h2 {
     font-size: 1.2em;
@@ -23,5 +26,10 @@ export const Container = styled.div`
     height: 125px;
     right: -38px;
     top: -78px;
+  }
+
+  button:last-of-type {
+    align-self: flex-end;
+    margin-top: 1em;
   }
 `
