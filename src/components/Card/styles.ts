@@ -1,35 +1,31 @@
-import styled from 'styled-components'
-import questionIllustration from '../../assets/undraw_adventure_4hum_1.svg'
+import styled, { css } from 'styled-components'
 
-export const Container = styled.div`
+import questionIllustration from '../../assets/card_detail.svg'
+
+interface CardProps {
+  hasImage?: boolean
+}
+
+export const Container = styled.div<CardProps>`
   background: #fff;
   border-radius: 1.4rem;
-  padding: 2rem 2rem;
+  padding: 4rem 2rem 2rem;
   position: relative;
+  min-height: 30vh;
   width: min(400px, 70vw);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 
-  h2 {
-    font-size: 1.2em;
-    color: #2f527b;
-    margin-bottom: 1.6em;
-  }
-
-  &::after {
-    position: absolute;
-    content: '';
-    background-image: url(${questionIllustration});
-    background-repeat: no-repeat;
-    width: 200px;
-    height: 125px;
-    right: -38px;
-    top: -78px;
-  }
-
-  button:last-of-type {
-    align-self: flex-end;
-    margin-top: 1em;
-  }
+  ${props =>
+    props.hasImage &&
+    css`
+      &::after {
+        position: absolute;
+        content: '';
+        background-image: url(${questionIllustration});
+        background-repeat: no-repeat;
+        width: 200px;
+        height: 125px;
+        right: -38px;
+        top: -78px;
+      }
+    `}
 `

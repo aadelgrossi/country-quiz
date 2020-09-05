@@ -2,8 +2,12 @@ import React from 'react'
 
 import { Container } from './styles'
 
-const Card: React.FC = ({ children }) => {
-  return <Container>{children}</Container>
+interface CardProps {
+  hasImage?: boolean
+}
+
+const Card: React.FC<CardProps> = ({ children, ...rest }) => {
+  return <Container {...rest}>{children}</Container>
 }
 
 export default Card
