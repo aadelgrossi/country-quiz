@@ -1,4 +1,4 @@
-import React, { Ref, ReactComponentElement } from 'react'
+import React from 'react'
 
 import { Container } from './styles'
 
@@ -23,8 +23,8 @@ const Choice: React.FC<ChoiceProps> = ({
       className={className}
     >
       {children}
-      {className === 'error' && <MdClear size={16}></MdClear>}
-      {className === 'correct' && <MdDone size={16}></MdDone>}
+      {className?.includes('error') && <MdClear size={16}></MdClear>}
+      {className?.includes('success') && <MdDone size={16}></MdDone>}
     </Container>
   )
 }

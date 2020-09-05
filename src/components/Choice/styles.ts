@@ -46,7 +46,7 @@ export const Container = styled.button<IChoiceProps>`
       }
 
       &.error,
-      &.correct {
+      &.success {
         box-shadow: unset;
         > span {
           color: #fff;
@@ -57,7 +57,7 @@ export const Container = styled.button<IChoiceProps>`
         background-color: #ea8282;
       }
 
-      &.correct {
+      &.success {
         background-color: #60bf88;
       }
     `}
@@ -68,6 +68,7 @@ export const Container = styled.button<IChoiceProps>`
       display: flex;
       align-items: center;
       justify-content: left;
+
       strong {
         text-align: left;
         width: 30%;
@@ -78,7 +79,7 @@ export const Container = styled.button<IChoiceProps>`
       > span {
         font-size: 0.3em;
         color: #fff;
-        background: rgba(96, 102, 208, 1);
+        background: var(--color-secondary);
         padding: 0.5em 1.5em;
         border-radius: 0.5rem;
       }
@@ -88,17 +89,11 @@ export const Container = styled.button<IChoiceProps>`
       }
     `}
 
-  /* &:hover,
-  &:focus {
-    color: #fff;
-    border: 0;
-    background-color: #f9a826;
-    box-shadow: none;
-  } */
+
   &:hover {
     color: #fff;
     border: 0;
-    background-color: #f9a826;
+    background-color: var(--color-primary);
     box-shadow: none;
   }
 `
