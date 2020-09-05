@@ -9,6 +9,14 @@ export default createGlobalStyle`
     font-family: 'Poppins', sans-serif;
   }
 
+  :root {
+    --color-primary-title: #F2F2F2;
+    --color-question-title: #2f527b;
+    --color-secondary-title: #1D355D;
+    --color-primary: #F9A826;
+    --color-secondary: #6066d0;
+  }
+
   body {
     color: #F2F2F2;
     overflow-x: hidden;
@@ -25,6 +33,10 @@ export default createGlobalStyle`
 
   h1 {
     font-size: 1.6em;
+  }
+
+  h2 {
+    color: var(--color-question-title);
   }
 
   button {
