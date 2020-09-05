@@ -6,8 +6,16 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'fill' | 'outline'
 }
 
-const Button: React.FC<ButtonProps> = ({ children, variant = 'fill' }) => {
-  return <Container variant={variant}>{children}</Container>
+const Button: React.FC<ButtonProps> = ({
+  children,
+  variant = 'fill',
+  ...rest
+}) => {
+  return (
+    <Container variant={variant} {...rest}>
+      {children}
+    </Container>
+  )
 }
 
 export default Button
