@@ -24,6 +24,9 @@ interface QuizContextData {
   currentQuestion: number
   chooseDifficulty(difficulty: Difficulty): void
   checkAnswer(option: Country): boolean
+  getNext(): void
+  isFinished(): boolean
+  numQuestions: number
 }
 
 const QuizContext = createContext<QuizContextData>({} as QuizContextData)
@@ -57,11 +60,22 @@ export const QuizProvider: React.FC = ({ children }) => {
     [currentQuestion, questions]
   )
 
+  const isFinished = useCallback(() => {
+    return currentQuestion + 1 === numQuestions
+  }, [currentQuestion, numQuestions])
+
+  const getNext = useCallback(() => {
+    setCurrentQuestion(question => question + 1)
+
+    if (isFinished()) {
+      setQuizStatus('end')
+    }
+  }, [isFinished])
+
   const chooseDifficulty = useCallback(
     async ({ countries, numQuestions }: Difficulty) => {
       const data = await getCountries(countries)
 
-      console.log(data)
       setNumQuestions(numQuestions)
       setCountries(data)
       setQuizStatus('ongoing')
@@ -80,6 +94,9 @@ export const QuizProvider: React.FC = ({ children }) => {
         quizStatus,
         chooseDifficulty,
         checkAnswer,
+        getNext,
+        isFinished,
+        numQuestions,
         currentQuestion
       }}
     >
