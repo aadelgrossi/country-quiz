@@ -20,7 +20,7 @@ export const Contents = styled.div`
   flex-shrink: 0;
   max-width: 1000px;
 
-  h1 {
+  > h1 {
     text-transform: uppercase;
     margin-bottom: 0.5rem;
   }
