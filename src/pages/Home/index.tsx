@@ -1,17 +1,28 @@
 import React from 'react'
 
-import { Container, Contents } from './styles'
 import Footer from '../../components/Footer'
-import QuestionCard from '../../components/QuestionCard'
+import Quiz from '../../components/Quiz'
+import Results from '../../components/Results'
+import SelectDifficulty from '../../components/SelectDifficulty'
 
-const Home: React.FC = () => (
-  <Container>
-    <Contents>
-      <h1>Country Quiz</h1>
-      <QuestionCard />
-    </Contents>
-    <Footer />
-  </Container>
-)
+import { useQuiz } from '../../hooks/useQuiz'
+
+import { Container, Contents } from './styles'
+
+const Home: React.FC = () => {
+  const { quizStatus } = useQuiz()
+
+  return (
+    <Container>
+      <Contents>
+        <h1>Country Quiz</h1>
+        {quizStatus === 'standby' && <SelectDifficulty />}
+        {quizStatus === 'ongoing' && <Quiz />}
+        {quizStatus === 'end' && <Results />}
+      </Contents>
+      <Footer />
+    </Container>
+  )
+}
 
 export default Home
