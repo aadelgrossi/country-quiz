@@ -15,7 +15,7 @@ export interface IQuestion {
   choices: Country[]
 }
 
-export type QuizStatus = 'standby' | 'ongoing' | 'success' | 'fail'
+export type QuizStatus = 'standby' | 'ongoing' | 'end'
 
 export interface IQuiz {
   score: number
