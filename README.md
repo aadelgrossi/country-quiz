@@ -1,6 +1,6 @@
 # :earth_americas:  country-quiz
 
-Challenge yourself and test your knowledge on countries of the world.
+Challenge yourself and test your knowledge about flags and capitals of countries.
 
 This is a solution for the [country-quiz](https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8) dev challenge.
 
