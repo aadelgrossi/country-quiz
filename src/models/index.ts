@@ -5,9 +5,7 @@ export interface Country {
   region: string
 }
 
-// export type QuestionType = 'capital' | 'flag' | 'region'
-
-export type QuestionType = 'capital' | 'flag' | 'region'
+export type QuestionType = 'capital' | 'flag'
 
 export interface IQuestion {
   type: QuestionType
@@ -26,6 +24,5 @@ export interface IQuiz {
 export interface Difficulty {
   name: string
   numQuestions: number
-  numCountries: number
   countries: string
 }

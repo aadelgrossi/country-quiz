@@ -23,8 +23,10 @@ const SelectDifficulty: React.FC = () => {
             choiceType="difficulty"
           >
             <strong>{difficulty.name}</strong>
-            <span>{difficulty.numQuestions} questions </span>
-            <span>{difficulty.numCountries} countries </span>
+            <div>
+              <span>{difficulty.numQuestions} questions </span>
+              <span>{difficulty.countries.split(';').length} countries </span>
+            </div>
           </Choice>
         ))}
       </Contents>
