@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Contents = styled.div`
-  height: 20rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -19,11 +19,14 @@ export const Contents = styled.div`
   flex-direction: column;
   flex-shrink: 0;
   max-width: 1000px;
+  margin: 0 5vw;
 
   > h1 {
     text-transform: uppercase;
     margin-bottom: 0.5rem;
   }
 
-  margin: 0 auto;
+  @media (min-width: 700px) {
+    margin: 0 auto;
+  }
 `

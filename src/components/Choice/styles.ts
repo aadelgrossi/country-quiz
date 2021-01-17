@@ -12,10 +12,10 @@ export const Container = styled.button<IChoiceProps>`
   width: 100%;
   box-shadow: inset 0px 0px 0px 2px rgba(96, 102, 208, 0.7);
   border-radius: 1rem;
-  padding: 0.8rem 1.2rem;
+  padding: 1.2rem;
   color: rgba(96, 102, 208, 0.8);
   transition: background-color 0.1s ease-in-out;
-  font-size: 1.2rem;
+  font-size: 1.2em;
 
   & + & {
     margin-top: 1em;
@@ -25,8 +25,12 @@ export const Container = styled.button<IChoiceProps>`
     props.choiceType === 'answer' &&
     css`
       span:first-of-type {
-        font-size: 1.5rem;
+        font-size: 1.2em;
         margin-right: 2rem;
+      }
+
+      > span:nth-of-type(2) {
+        font-size: min(1em, 3.5vw);
       }
 
       > svg {
@@ -39,10 +43,6 @@ export const Container = styled.button<IChoiceProps>`
 
       &.answered {
         pointer-events: none;
-
-        &:hover {
-          background-color: unset;
-        }
       }
 
       &.error,
@@ -53,11 +53,11 @@ export const Container = styled.button<IChoiceProps>`
         }
       }
 
-      &.error {
+      &.answered.error {
         background-color: #ea8282;
       }
 
-      &.success {
+      &.answered.success {
         background-color: #60bf88;
       }
     `}
@@ -66,26 +66,38 @@ export const Container = styled.button<IChoiceProps>`
     props.choiceType === 'difficulty' &&
     css`
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: left;
+
+      @media (min-width: 520px) {
+        flex-direction: row;
+        justify-content: left;
+
+        strong {
+          margin-right: auto;
+          text-align: left;
+        }
+      }
 
       strong {
-        text-align: left;
         width: 30%;
-        margin-right: auto;
+        font-size: min(1em, 4vw);
         text-transform: capitalize;
       }
 
-      > span {
-        font-size: 0.3em;
-        color: #fff;
-        background: var(--color-secondary);
-        padding: 0.5em 1.5em;
-        border-radius: 0.5rem;
-      }
+      div {
+        > span {
+          font-size: min(0.9em, 2.5vw);
+          color: #fff;
+          background: var(--color-secondary);
+          padding: 0.5em 1.5em;
+          border-radius: 0.5rem;
+          white-space: nowrap;
+        }
 
-      > span + span {
-        margin-left: 1em;
+        > span + span {
+          margin-left: 1em;
+        }
       }
     `}
 

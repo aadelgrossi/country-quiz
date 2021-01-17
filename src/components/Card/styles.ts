@@ -9,10 +9,14 @@ interface CardProps {
 export const Container = styled.div<CardProps>`
   background: #fff;
   border-radius: 1.4rem;
-  padding: 4rem 2rem 2rem;
+  padding: 8vw;
   position: relative;
   min-height: 30vh;
-  width: min(400px, 70vw);
+
+  @media (min-width: 600px) {
+    padding: 4rem 2rem 2rem;
+    width: min(500px, 90vw);
+  }
 
   ${props =>
     props.hasImage &&

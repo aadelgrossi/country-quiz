@@ -11,6 +11,10 @@ export const Container = styled.button<ButtonProps>`
   font-size: 1em;
   font-weight: 600;
 
+  > span {
+    white-space: nowrap;
+  }
+
   background-color: ${props => (props.variant === 'fill' ? '#f9a826' : '')};
   color: ${props =>
     props.variant === 'fill' ? '#fff' : 'var(--color-secondary-title)'};
