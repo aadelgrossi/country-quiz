@@ -31,20 +31,21 @@ export const difficulties: Difficulty[] = [
    },
 +  {
 +    name: 'a new difficulty'
-+    numQuestions: 8,
++    numQuestions: 20,
 +    countries: 'au;br;ca;ie;at;cu;jm;no;sa;ch;ve;il;hr;ba'
 +  }
 ]
 ```
 
 **name** (*string*)  
-Label that will be displayed on splash screen
+Label that will be displayed on splash screen.
 
 **numQuestions** (*number*)  
 Self-explanatory.
 
 **countries** (*string*)  
-List of countries to be used in this difficulty. Must be a valid IBAN alpha-2 or alpha-3 format code. 
+List of countries to be used in this difficulty.  
+Must be valid IBAN alpha-2 or alpha-3 format codes, joined by semicolons.  
 Check the full list [here](https://www.iban.com/country-codes).
 
 
