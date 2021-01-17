@@ -23,7 +23,7 @@ export default createGlobalStyle`
   }
 
   #root {
-    font-size: 18px;
+    font-size: 14px;
     -webkit-font-smoothing: antialised;
   }
 
