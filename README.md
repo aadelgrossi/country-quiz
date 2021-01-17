@@ -31,7 +31,7 @@ export const difficulties: Difficulty[] = [
    },
 +  {
 +    name: 'a new difficulty'
-+    numQuestions: 8,
++    numQuestions: 20,
 +    countries: 'au;br;ca;ie;at;cu;jm;no;sa;ch;ve;il;hr;ba'
 +  }
 ]
