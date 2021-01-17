@@ -53,4 +53,4 @@ Check the full list [here](https://www.iban.com/country-codes).
 
 License
 ----
-MIT
+[MIT](LICENSE)
