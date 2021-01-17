@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  createContext,
-  useContext,
-  useEffect,
-  useCallback
-} from 'react'
+import React, { useState, createContext, useContext, useCallback } from 'react'
 import { getCountries } from '../services/api'
 
 import _ from 'lodash'
@@ -25,7 +19,8 @@ interface QuizContextData {
   chooseDifficulty(difficulty: Difficulty): void
   checkAnswer(option: Country): boolean
   getNext(): void
-  isFinished(): boolean
+  restartQuiz(): void
+  score: number
   numQuestions: number
 }
 
@@ -35,69 +30,73 @@ export const QuizProvider: React.FC = ({ children }) => {
   const [quizStatus, setQuizStatus] = useState<QuizStatus>('standby')
   const [numQuestions, setNumQuestions] = useState(0)
   const [questions, setQuestions] = useState([] as IQuestion[])
-  const [countries, setCountries] = useState([] as Country[])
   const [currentQuestion, setCurrentQuestion] = useState(0)
-
-  const buildQuestions = useCallback(() => {
-    const questionTypes = getQuestionTypesSequence(numQuestions)
-
-    const newQuestions = questionTypes.map((type: QuestionType) => {
-      const choices = _.sampleSize(countries, 4)
-      return {
-        type,
-        choices,
-        correctAnswer: _.sample(choices)
-      } as IQuestion
-    })
-
-    setQuestions(newQuestions)
-  }, [countries, numQuestions])
-
-  const checkAnswer = useCallback(
-    (option: Country) => {
-      return option === questions[currentQuestion].correctAnswer
-    },
-    [currentQuestion, questions]
-  )
-
-  const isFinished = useCallback(() => {
-    return currentQuestion + 1 === numQuestions
-  }, [currentQuestion, numQuestions])
-
-  const getNext = useCallback(() => {
-    setCurrentQuestion(question => question + 1)
-
-    if (isFinished()) {
-      setQuizStatus('end')
-    }
-  }, [isFinished])
+  const [score, setScore] = useState(0)
 
   const chooseDifficulty = useCallback(
-    async ({ countries, numQuestions }: Difficulty) => {
-      const data = await getCountries(countries)
+    async ({ countries: countriesList, numQuestions }: Difficulty) => {
+      const countries = await getCountries(countriesList)
+      const questionTypes = getQuestionTypesSequence(numQuestions)
+      const questionCountries = _.sampleSize(countries, numQuestions)
+
+      const newQuestions = questionTypes.map((type: QuestionType, index) => {
+        const correctAnswer = questionCountries[index]
+        const alternatives = _.sampleSize(
+          countries.filter(cty => cty.name !== questionCountries[index].name),
+          3
+        )
+
+        const choices = _.shuffle([...alternatives, correctAnswer])
+        return {
+          type,
+          choices,
+          correctAnswer
+        } as IQuestion
+      })
 
       setNumQuestions(numQuestions)
-      setCountries(data)
+      setQuestions(newQuestions)
       setQuizStatus('ongoing')
     },
     []
   )
 
-  useEffect(() => {
-    buildQuestions()
-  }, [countries, buildQuestions])
+  const checkAnswer = useCallback(
+    (option: Country) => {
+      const isAnswerCorrect =
+        option === questions[currentQuestion].correctAnswer
+
+      if (isAnswerCorrect) setScore(prev => prev + 1)
+
+      return isAnswerCorrect
+    },
+    [currentQuestion, questions]
+  )
+
+  const getNext = useCallback(() => {
+    currentQuestion + 1 === numQuestions
+      ? setQuizStatus('end')
+      : setCurrentQuestion(question => question + 1)
+  }, [currentQuestion, numQuestions])
+
+  const restartQuiz = useCallback(() => {
+    setCurrentQuestion(0)
+    setScore(0)
+    setQuizStatus('standby')
+  }, [])
 
   return (
     <QuizContext.Provider
       value={{
         questions,
         quizStatus,
+        score,
+        numQuestions,
+        currentQuestion,
         chooseDifficulty,
         checkAnswer,
         getNext,
-        isFinished,
-        numQuestions,
-        currentQuestion
+        restartQuiz
       }}
     >
       {children}
