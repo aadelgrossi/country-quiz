@@ -19,7 +19,8 @@ export default createGlobalStyle`
 
   body {
     color: #F2F2F2;
-    overflow-x: hidden;
+    background-color: #000;
+    overflow: hidden;
   }
 
   #root {

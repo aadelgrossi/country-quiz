@@ -3,8 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   width: 100%;
   display: flex;
-  position: fixed;
-  bottom: 0;
+  margin-top: auto;
   justify-content: center;
 
   p {

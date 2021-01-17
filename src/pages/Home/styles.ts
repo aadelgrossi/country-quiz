@@ -7,7 +7,6 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
   background-image: url(${bgImg});
   background-size: cover;
@@ -18,10 +17,11 @@ export const Contents = styled.div`
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  max-width: 1000px;
   margin: 0 5vw;
+  padding-top: 20vh;
 
   > h1 {
+    font-size: 1.6rem;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
   }

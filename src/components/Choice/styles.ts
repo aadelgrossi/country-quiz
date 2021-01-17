@@ -66,7 +66,6 @@ export const Container = styled.button<IChoiceProps>`
     props.choiceType === 'difficulty' &&
     css`
       display: flex;
-      flex-direction: column;
       align-items: center;
 
       @media (min-width: 520px) {
@@ -83,6 +82,7 @@ export const Container = styled.button<IChoiceProps>`
         width: 30%;
         font-size: min(1em, 4vw);
         text-transform: capitalize;
+        text-align: left;
       }
 
       div {
