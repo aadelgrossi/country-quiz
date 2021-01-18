@@ -17,8 +17,8 @@ export const Contents = styled.div`
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  margin: 0 5vw;
-  padding-top: 20vh;
+  margin: auto 2rem 0;
+  align-self: center;
 
   > h1 {
     font-size: 1.6rem;
@@ -26,7 +26,7 @@ export const Contents = styled.div`
     margin-bottom: 0.5rem;
   }
 
-  @media (min-width: 700px) {
-    margin: 0 auto;
+  @media (min-width: 400px) {
+    margin: auto auto 0;
   }
 `

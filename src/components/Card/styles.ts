@@ -9,13 +9,13 @@ interface CardProps {
 export const Container = styled.div<CardProps>`
   background: #fff;
   border-radius: 1.4rem;
-  padding: 8vw;
+  padding: min(10vh, 2rem) min(8vw, 1.5rem);
   position: relative;
-  min-height: 30vh;
+  width: max(290px, 70vw);
 
   @media (min-width: 600px) {
     padding: 4rem 2rem 2rem;
-    width: min(500px, 90vw);
+    width: min(480px, 90vw);
   }
 
   ${props =>
@@ -26,10 +26,11 @@ export const Container = styled.div<CardProps>`
         content: '';
         background-image: url(${questionIllustration});
         background-repeat: no-repeat;
-        width: 200px;
-        height: 125px;
-        right: -38px;
-        top: -78px;
+        background-size: 100%;
+        width: 38%;
+        height: 37%;
+        right: 0px;
+        top: -80px;
       }
     `}
 `

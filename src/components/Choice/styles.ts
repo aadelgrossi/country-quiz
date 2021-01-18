@@ -12,13 +12,18 @@ export const Container = styled.button<IChoiceProps>`
   width: 100%;
   box-shadow: inset 0px 0px 0px 2px rgba(96, 102, 208, 0.7);
   border-radius: 1rem;
-  padding: 1.2rem;
+  padding: 1rem;
   color: rgba(96, 102, 208, 0.8);
   transition: background-color 0.1s ease-in-out;
-  font-size: 1.2em;
+  font-size: 1em;
 
   & + & {
     margin-top: 1em;
+  }
+
+  @media (min-width: 600px) {
+    padding: 1.2rem;
+    font-size: 1.2em;
   }
 
   ${props =>
@@ -83,6 +88,11 @@ export const Container = styled.button<IChoiceProps>`
         font-size: min(1em, 4vw);
         text-transform: capitalize;
         text-align: left;
+        margin-right: 1rem;
+
+        @media (min-width: 600px) {
+          text-align: center;
+        }
       }
 
       div {
@@ -90,9 +100,13 @@ export const Container = styled.button<IChoiceProps>`
           font-size: min(0.9em, 2.5vw);
           color: #fff;
           background: var(--color-secondary);
-          padding: 0.5em 1.5em;
+          padding: 0.3em 1em;
           border-radius: 0.5rem;
           white-space: nowrap;
+
+          @media (min-width: 600px) {
+            padding: 0.5em 1.5em;
+          }
         }
 
         > span + span {

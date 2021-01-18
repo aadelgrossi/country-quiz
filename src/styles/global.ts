@@ -20,7 +20,7 @@ export default createGlobalStyle`
   body {
     color: #F2F2F2;
     background-color: #000;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   #root {
