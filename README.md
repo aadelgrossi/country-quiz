@@ -21,9 +21,9 @@ $ yarn start
 
 As an additional feature, this implementation allows the user to select a difficulty before starting the quiz. The defaults are:
 
-- Easy (4 questions, 20 countries)
-- Medium (8 questions, 30 countries)
-- Hard (12 questions, 40 countries)
+**Easy** (4 questions, 20 countries)  
+**Medium** (8 questions, 30 countries)  
+**Hard** (12 questions, 40 countries)
 
 You can create a custom setting by editing [src/parameters/difficulties.ts](src/parameters/difficulties.ts) to determine a number of questions and specific countries to be used. You can do so by adding a new object to the array:
  
@@ -52,7 +52,7 @@ Check the full list [here](https://www.iban.com/country-codes).
 
 
 ## :construction:  TODO
-- :ballot_box_with_check: Live demo
+:ballot_box_with_check: Live demo
 
 License
 ----
