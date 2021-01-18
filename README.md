@@ -52,7 +52,7 @@ Check the full list [here](https://www.iban.com/country-codes).
 
 
 ## :construction:  TODO
-- :x: Live demo
+- :ballot_box_with_check: Live demo
 
 License
 ----
