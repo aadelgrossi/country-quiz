@@ -10,10 +10,13 @@ Check out the [live demo](https://country-quiz.andregrossi.com/)
 Clone the repository and install dependencies by running.
 
 ```sh
+# Clone the repository
+$ git clone https://github.com/aadelgrossi/country-quiz.git
+
+# Install dependencies
 $ yarn
-```
-Run the app on http://localhost:3000 with:
-```sh
+
+# Run on http://localhost:3000
 $ yarn start
 ```
 
