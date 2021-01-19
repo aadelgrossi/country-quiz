@@ -11,8 +11,8 @@ export const Container = styled.div`
     margin-bottom: 1.6em;
   }
 
-  button:last-of-type {
+  > button:last-of-type {
     align-self: flex-end;
-    margin-top: 1em;
+    margin-top: 1.5rem;
   }
 `

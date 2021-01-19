@@ -22,8 +22,8 @@ export const Container = styled.button<IChoiceProps>`
   }
 
   @media (min-width: 600px) {
-    padding: 1.2rem;
-    font-size: 1.2em;
+    padding: 1rem;
+    font-size: 1.3em;
   }
 
   ${props =>

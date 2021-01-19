@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import bgImg from '../../assets/background.png'
 
 export const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -27,6 +27,6 @@ export const Contents = styled.div`
   }
 
   @media (min-width: 400px) {
-    margin: auto auto 0;
+    margin: 180px auto 100px;
   }
 `
