@@ -4,7 +4,7 @@ Challenge yourself and test your knowledge about flags and capitals of countries
 
 This is a solution for the [country-quiz](https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8) dev challenge.
 
-Check out the [live demo](https://country-quiz.andregrossi.com/)
+Check out the [live demo](https://country-quiz-ce953.firebaseapp.com)
 
 ##  :wrench: Setup & Installation
 Clone the repository and install dependencies by running.
